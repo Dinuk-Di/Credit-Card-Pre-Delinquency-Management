@@ -55,6 +55,24 @@ Before building the automated ETL script, I rigorously analyzed the raw data in 
 **Decision:** I designed the ETL script to export to `bi_data.json` instead of injecting variables directly into an HTML or `.js` file.
 **Reasoning:** This aligns with modern industry standards. The frontend dynamically fetches the JSON payload. When the server runs the ETL pipeline, the data updates on disk, and the frontend smoothly polls the new JSON payload to re-render the charts seamlessly. 
 
+## Installation & Setup
+
+To ensure you don't run into any dependency errors when executing the notebook or the server, please install the required Python packages first.
+
+1. **Create a virtual environment (optional but recommended):**
+   ```bash
+   python -m venv venv
+   # On Windows:
+   venv\Scripts\activate
+   # On macOS/Linux:
+   source venv/bin/activate
+   ```
+
+2. **Install the dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
 ## How to Run the System
 
 1. **Start the Server:**

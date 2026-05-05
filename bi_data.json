@@ -1,0 +1,578 @@
+{
+  "kpis": {
+    "totalActive": 48,
+    "totalBad": 9,
+    "globalBadRate": 18.75,
+    "avgArrears": 7.5
+  },
+  "cycleData": {
+    "labels": [
+      "6",
+      "8",
+      "12",
+      "28"
+    ],
+    "badRate": [
+      58.33,
+      16.67,
+      0.0,
+      0.0
+    ],
+    "totalActive": [
+      12,
+      12,
+      15,
+      9
+    ],
+    "badCount": [
+      7,
+      2,
+      0,
+      0
+    ]
+  },
+  "overdueData": {
+    "labels": [
+      "0",
+      "3",
+      "4",
+      "5"
+    ],
+    "data": [
+      45,
+      1,
+      1,
+      1
+    ]
+  },
+  "tableData": [
+    {
+      "customer_account_no": "cust_111",
+      "last_billing_date": "2025-03-28T00:00:00.000",
+      "min_amt_due_date": "2025-04-21T00:00:00.000",
+      "minimum_amount": 150.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 300.0,
+      "is_bad": 0,
+      "billing_cycle_day": 28
+    },
+    {
+      "customer_account_no": "cust_111",
+      "last_billing_date": "2025-04-28T00:00:00.000",
+      "min_amt_due_date": "2025-05-21T00:00:00.000",
+      "minimum_amount": 200.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 19956.0,
+      "is_bad": 0,
+      "billing_cycle_day": 28
+    },
+    {
+      "customer_account_no": "cust_111",
+      "last_billing_date": "2025-05-28T00:00:00.000",
+      "min_amt_due_date": "2025-06-21T00:00:00.000",
+      "minimum_amount": 100.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 12000.0,
+      "is_bad": 0,
+      "billing_cycle_day": 28
+    },
+    {
+      "customer_account_no": "cust_112",
+      "last_billing_date": "2025-03-06T00:00:00.000",
+      "min_amt_due_date": "2025-03-26T00:00:00.000",
+      "minimum_amount": 100.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 12000.0,
+      "is_bad": 0,
+      "billing_cycle_day": 6
+    },
+    {
+      "customer_account_no": "cust_112",
+      "last_billing_date": "2025-04-06T00:00:00.000",
+      "min_amt_due_date": "2025-04-26T00:00:00.000",
+      "minimum_amount": 100.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 0.0,
+      "is_bad": 1,
+      "billing_cycle_day": 6
+    },
+    {
+      "customer_account_no": "cust_112",
+      "last_billing_date": "2025-05-06T00:00:00.000",
+      "min_amt_due_date": "2025-05-26T00:00:00.000",
+      "minimum_amount": 150.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 3750.0,
+      "is_bad": 0,
+      "billing_cycle_day": 6
+    },
+    {
+      "customer_account_no": "cust_113",
+      "last_billing_date": "2025-03-08T00:00:00.000",
+      "min_amt_due_date": "2025-03-28T00:00:00.000",
+      "minimum_amount": 10000.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 24000.0,
+      "is_bad": 0,
+      "billing_cycle_day": 8
+    },
+    {
+      "customer_account_no": "cust_113",
+      "last_billing_date": "2025-04-08T00:00:00.000",
+      "min_amt_due_date": "2025-04-28T00:00:00.000",
+      "minimum_amount": 8000.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 0.0,
+      "is_bad": 1,
+      "billing_cycle_day": 8
+    },
+    {
+      "customer_account_no": "cust_113",
+      "last_billing_date": "2025-05-08T00:00:00.000",
+      "min_amt_due_date": "2025-05-28T00:00:00.000",
+      "minimum_amount": 18500.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 55500.0,
+      "is_bad": 0,
+      "billing_cycle_day": 8
+    },
+    {
+      "customer_account_no": "cust_114",
+      "last_billing_date": "2025-03-12T00:00:00.000",
+      "min_amt_due_date": "2025-04-02T00:00:00.000",
+      "minimum_amount": 100.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 12000.0,
+      "is_bad": 0,
+      "billing_cycle_day": 12
+    },
+    {
+      "customer_account_no": "cust_114",
+      "last_billing_date": "2025-04-12T00:00:00.000",
+      "min_amt_due_date": "2025-05-02T00:00:00.000",
+      "minimum_amount": 110.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 12000.0,
+      "is_bad": 0,
+      "billing_cycle_day": 12
+    },
+    {
+      "customer_account_no": "cust_114",
+      "last_billing_date": "2025-05-12T00:00:00.000",
+      "min_amt_due_date": "2025-06-02T00:00:00.000",
+      "minimum_amount": 120.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 12000.0,
+      "is_bad": 0,
+      "billing_cycle_day": 12
+    },
+    {
+      "customer_account_no": "cust_115",
+      "last_billing_date": "2025-03-08T00:00:00.000",
+      "min_amt_due_date": "2025-03-28T00:00:00.000",
+      "minimum_amount": 100.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 1200.0,
+      "is_bad": 0,
+      "billing_cycle_day": 8
+    },
+    {
+      "customer_account_no": "cust_115",
+      "last_billing_date": "2025-04-08T00:00:00.000",
+      "min_amt_due_date": "2025-04-28T00:00:00.000",
+      "minimum_amount": 250.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 753.0,
+      "is_bad": 0,
+      "billing_cycle_day": 8
+    },
+    {
+      "customer_account_no": "cust_115",
+      "last_billing_date": "2025-05-08T00:00:00.000",
+      "min_amt_due_date": "2025-05-28T00:00:00.000",
+      "minimum_amount": 300.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 300.0,
+      "is_bad": 0,
+      "billing_cycle_day": 8
+    },
+    {
+      "customer_account_no": "cust_116",
+      "last_billing_date": "2025-03-08T00:00:00.000",
+      "min_amt_due_date": "2025-03-28T00:00:00.000",
+      "minimum_amount": 90.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 12000.0,
+      "is_bad": 0,
+      "billing_cycle_day": 8
+    },
+    {
+      "customer_account_no": "cust_116",
+      "last_billing_date": "2025-04-08T00:00:00.000",
+      "min_amt_due_date": "2025-04-28T00:00:00.000",
+      "minimum_amount": 100.11,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 12000.0,
+      "is_bad": 0,
+      "billing_cycle_day": 8
+    },
+    {
+      "customer_account_no": "cust_116",
+      "last_billing_date": "2025-05-08T00:00:00.000",
+      "min_amt_due_date": "2025-05-28T00:00:00.000",
+      "minimum_amount": 100.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 15000.0,
+      "is_bad": 0,
+      "billing_cycle_day": 8
+    },
+    {
+      "customer_account_no": "cust_117",
+      "last_billing_date": "2025-03-06T00:00:00.000",
+      "min_amt_due_date": "2025-03-26T00:00:00.000",
+      "minimum_amount": 5000.0,
+      "current_overdue_cycles": 3,
+      "number_of_days_in_arreas": 90,
+      "total_paid": 0.0,
+      "is_bad": 1,
+      "billing_cycle_day": 6
+    },
+    {
+      "customer_account_no": "cust_117",
+      "last_billing_date": "2025-04-06T00:00:00.000",
+      "min_amt_due_date": "2025-04-26T00:00:00.000",
+      "minimum_amount": 5010.0,
+      "current_overdue_cycles": 4,
+      "number_of_days_in_arreas": 120,
+      "total_paid": 0.0,
+      "is_bad": 1,
+      "billing_cycle_day": 6
+    },
+    {
+      "customer_account_no": "cust_117",
+      "last_billing_date": "2025-05-06T00:00:00.000",
+      "min_amt_due_date": "2025-05-26T00:00:00.000",
+      "minimum_amount": 5020.0,
+      "current_overdue_cycles": 5,
+      "number_of_days_in_arreas": 150,
+      "total_paid": 0.0,
+      "is_bad": 1,
+      "billing_cycle_day": 6
+    },
+    {
+      "customer_account_no": "cust_121",
+      "last_billing_date": "2025-03-08T00:00:00.000",
+      "min_amt_due_date": "2025-03-28T00:00:00.000",
+      "minimum_amount": 562.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 0.0,
+      "is_bad": 1,
+      "billing_cycle_day": 8
+    },
+    {
+      "customer_account_no": "cust_121",
+      "last_billing_date": "2025-04-08T00:00:00.000",
+      "min_amt_due_date": "2025-04-28T00:00:00.000",
+      "minimum_amount": 120.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 240825.0,
+      "is_bad": 0,
+      "billing_cycle_day": 8
+    },
+    {
+      "customer_account_no": "cust_121",
+      "last_billing_date": "2025-05-08T00:00:00.000",
+      "min_amt_due_date": "2025-05-28T00:00:00.000",
+      "minimum_amount": 100.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 24000.0,
+      "is_bad": 0,
+      "billing_cycle_day": 8
+    },
+    {
+      "customer_account_no": "cust_122",
+      "last_billing_date": "2025-03-12T00:00:00.000",
+      "min_amt_due_date": "2025-04-02T00:00:00.000",
+      "minimum_amount": 4500.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 14100.0,
+      "is_bad": 0,
+      "billing_cycle_day": 12
+    },
+    {
+      "customer_account_no": "cust_122",
+      "last_billing_date": "2025-04-12T00:00:00.000",
+      "min_amt_due_date": "2025-05-02T00:00:00.000",
+      "minimum_amount": 3000.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 24600.0,
+      "is_bad": 0,
+      "billing_cycle_day": 12
+    },
+    {
+      "customer_account_no": "cust_122",
+      "last_billing_date": "2025-05-12T00:00:00.000",
+      "min_amt_due_date": "2025-06-02T00:00:00.000",
+      "minimum_amount": 3500.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 12000.0,
+      "is_bad": 0,
+      "billing_cycle_day": 12
+    },
+    {
+      "customer_account_no": "cust_123",
+      "last_billing_date": "2025-03-12T00:00:00.000",
+      "min_amt_due_date": "2025-04-02T00:00:00.000",
+      "minimum_amount": 100.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 900.0,
+      "is_bad": 0,
+      "billing_cycle_day": 12
+    },
+    {
+      "customer_account_no": "cust_123",
+      "last_billing_date": "2025-04-12T00:00:00.000",
+      "min_amt_due_date": "2025-05-02T00:00:00.000",
+      "minimum_amount": 105.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 300.0,
+      "is_bad": 0,
+      "billing_cycle_day": 12
+    },
+    {
+      "customer_account_no": "cust_123",
+      "last_billing_date": "2025-05-12T00:00:00.000",
+      "min_amt_due_date": "2025-06-02T00:00:00.000",
+      "minimum_amount": 105.6,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 900.0,
+      "is_bad": 0,
+      "billing_cycle_day": 12
+    },
+    {
+      "customer_account_no": "cust_124",
+      "last_billing_date": "2025-03-12T00:00:00.000",
+      "min_amt_due_date": "2025-04-02T00:00:00.000",
+      "minimum_amount": 1000.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 12000.0,
+      "is_bad": 0,
+      "billing_cycle_day": 12
+    },
+    {
+      "customer_account_no": "cust_124",
+      "last_billing_date": "2025-04-12T00:00:00.000",
+      "min_amt_due_date": "2025-05-02T00:00:00.000",
+      "minimum_amount": 500.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 11100.0,
+      "is_bad": 0,
+      "billing_cycle_day": 12
+    },
+    {
+      "customer_account_no": "cust_124",
+      "last_billing_date": "2025-05-12T00:00:00.000",
+      "min_amt_due_date": "2025-06-02T00:00:00.000",
+      "minimum_amount": 115.35,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 42000.0,
+      "is_bad": 0,
+      "billing_cycle_day": 12
+    },
+    {
+      "customer_account_no": "cust_125",
+      "last_billing_date": "2025-03-12T00:00:00.000",
+      "min_amt_due_date": "2025-04-02T00:00:00.000",
+      "minimum_amount": 100.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 12000.0,
+      "is_bad": 0,
+      "billing_cycle_day": 12
+    },
+    {
+      "customer_account_no": "cust_125",
+      "last_billing_date": "2025-04-12T00:00:00.000",
+      "min_amt_due_date": "2025-05-02T00:00:00.000",
+      "minimum_amount": 107.66,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 12000.0,
+      "is_bad": 0,
+      "billing_cycle_day": 12
+    },
+    {
+      "customer_account_no": "cust_125",
+      "last_billing_date": "2025-05-12T00:00:00.000",
+      "min_amt_due_date": "2025-06-02T00:00:00.000",
+      "minimum_amount": 500.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 1200.0,
+      "is_bad": 0,
+      "billing_cycle_day": 12
+    },
+    {
+      "customer_account_no": "cust_126",
+      "last_billing_date": "2025-03-06T00:00:00.000",
+      "min_amt_due_date": "2025-03-26T00:00:00.000",
+      "minimum_amount": 100.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 0.0,
+      "is_bad": 1,
+      "billing_cycle_day": 6
+    },
+    {
+      "customer_account_no": "cust_126",
+      "last_billing_date": "2025-04-06T00:00:00.000",
+      "min_amt_due_date": "2025-04-26T00:00:00.000",
+      "minimum_amount": 1200.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 45000.0,
+      "is_bad": 0,
+      "billing_cycle_day": 6
+    },
+    {
+      "customer_account_no": "cust_126",
+      "last_billing_date": "2025-05-06T00:00:00.000",
+      "min_amt_due_date": "2025-05-26T00:00:00.000",
+      "minimum_amount": 150.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 12000.0,
+      "is_bad": 0,
+      "billing_cycle_day": 6
+    },
+    {
+      "customer_account_no": "cust_127",
+      "last_billing_date": "2025-03-28T00:00:00.000",
+      "min_amt_due_date": "2025-04-21T00:00:00.000",
+      "minimum_amount": 580.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 2000.0,
+      "is_bad": 0,
+      "billing_cycle_day": 28
+    },
+    {
+      "customer_account_no": "cust_127",
+      "last_billing_date": "2025-04-28T00:00:00.000",
+      "min_amt_due_date": "2025-05-21T00:00:00.000",
+      "minimum_amount": 100.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 8000.0,
+      "is_bad": 0,
+      "billing_cycle_day": 28
+    },
+    {
+      "customer_account_no": "cust_127",
+      "last_billing_date": "2025-05-28T00:00:00.000",
+      "min_amt_due_date": "2025-06-21T00:00:00.000",
+      "minimum_amount": 500.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 5200.0,
+      "is_bad": 0,
+      "billing_cycle_day": 28
+    },
+    {
+      "customer_account_no": "cust_128",
+      "last_billing_date": "2025-03-06T00:00:00.000",
+      "min_amt_due_date": "2025-03-26T00:00:00.000",
+      "minimum_amount": 100.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 0.0,
+      "is_bad": 1,
+      "billing_cycle_day": 6
+    },
+    {
+      "customer_account_no": "cust_128",
+      "last_billing_date": "2025-04-06T00:00:00.000",
+      "min_amt_due_date": "2025-04-26T00:00:00.000",
+      "minimum_amount": 103.89,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 0.0,
+      "is_bad": 1,
+      "billing_cycle_day": 6
+    },
+    {
+      "customer_account_no": "cust_128",
+      "last_billing_date": "2025-05-06T00:00:00.000",
+      "min_amt_due_date": "2025-05-26T00:00:00.000",
+      "minimum_amount": 100.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 450.0,
+      "is_bad": 0,
+      "billing_cycle_day": 6
+    },
+    {
+      "customer_account_no": "cust_129",
+      "last_billing_date": "2025-03-28T00:00:00.000",
+      "min_amt_due_date": "2025-04-21T00:00:00.000",
+      "minimum_amount": 100.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 1200.0,
+      "is_bad": 0,
+      "billing_cycle_day": 28
+    },
+    {
+      "customer_account_no": "cust_129",
+      "last_billing_date": "2025-04-28T00:00:00.000",
+      "min_amt_due_date": "2025-05-21T00:00:00.000",
+      "minimum_amount": 145.69,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 12000.0,
+      "is_bad": 0,
+      "billing_cycle_day": 28
+    },
+    {
+      "customer_account_no": "cust_129",
+      "last_billing_date": "2025-05-28T00:00:00.000",
+      "min_amt_due_date": "2025-06-21T00:00:00.000",
+      "minimum_amount": 100.0,
+      "current_overdue_cycles": 0,
+      "number_of_days_in_arreas": 0,
+      "total_paid": 12000.0,
+      "is_bad": 0,
+      "billing_cycle_day": 28
+    }
+  ]
+}

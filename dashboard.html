@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDM Intelligence Dashboard</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-blue: #3b82f6;
+            --accent-red: #ef4444;
+            --accent-green: #10b981;
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 2rem;
+            background-image: radial-gradient(circle at top right, rgba(59, 130, 246, 0.15), transparent 40%),
+                              radial-gradient(circle at bottom left, rgba(239, 68, 68, 0.1), transparent 40%);
+            background-attachment: fixed;
+        }
+
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        header h1 {
+            font-weight: 700;
+            font-size: 2rem;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .filters select {
+            background: rgba(15, 23, 42, 0.8);
+            color: white;
+            border: 1px solid var(--glass-border);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            outline: none;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .filters select:hover {
+            border-color: var(--accent-blue);
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        /* KPIs */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .kpi-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .kpi-title {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .kpi-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .kpi-value.danger { color: var(--accent-red); }
+        .kpi-value.success { color: var(--accent-green); }
+        .kpi-value.primary { color: var(--accent-blue); }
+
+        /* Charts */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 900px) {
+            .charts-grid { grid-template-columns: 1fr; }
+        }
+
+        .chart-container {
+            position: relative;
+            height: 350px;
+            width: 100%;
+        }
+
+        h2.card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #e2e8f0;
+        }
+
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        th {
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        tr:hover td {
+            background-color: rgba(255,255,255,0.02);
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge.bad {
+            background-color: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .badge.good {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: #6ee7b7;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-run-etl {
+            background-color: var(--accent-blue);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-run-etl:hover:not(:disabled) {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px -1px rgba(59, 130, 246, 0.5);
+        }
+
+        .btn-run-etl:disabled {
+            background-color: #475569;
+            cursor: not-allowed;
+            box-shadow: none;
+            opacity: 0.8;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .spin-icon {
+            display: inline-block;
+            animation: spin 1s linear infinite;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>Pre-Delinquency Management (PDM) Dashboard</h1>
+            <div class="header-actions">
+                <div class="filters">
+                    <select id="cycleFilter">
+                        <option value="all">All Billing Cycles</option>
+                        <option value="6">6th Cycle</option>
+                        <option value="8">8th Cycle</option>
+                        <option value="12">12th Cycle</option>
+                        <option value="28">28th Cycle</option>
+                    </select>
+                </div>
+                <button id="runEtlBtn" class="btn-run-etl">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    Run ETL Pipeline
+                </button>
+            </div>
+        </header>
+
+        <!-- KPIs -->
+        <div class="kpi-grid">
+            <div class="glass-card kpi-card">
+                <div class="kpi-title">Total Active Statements</div>
+                <div class="kpi-value primary" id="kpiTotalActive">0</div>
+            </div>
+            <div class="glass-card kpi-card">
+                <div class="kpi-title">Bad Statements</div>
+                <div class="kpi-value danger" id="kpiTotalBad">0</div>
+            </div>
+            <div class="glass-card kpi-card">
+                <div class="kpi-title">Global Bad Rate</div>
+                <div class="kpi-value danger" id="kpiBadRate">0%</div>
+            </div>
+            <div class="glass-card kpi-card">
+                <div class="kpi-title">Avg Days in Arrears</div>
+                <div class="kpi-value" id="kpiAvgArrears">0</div>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="charts-grid">
+            <div class="glass-card">
+                <h2 class="card-title">Bad Rate & Active Accounts by Billing Cycle</h2>
+                <div class="chart-container">
+                    <canvas id="cycleChart"></canvas>
+                </div>
+            </div>
+            <div class="glass-card">
+                <h2 class="card-title">Accounts by Overdue Cycles</h2>
+                <div class="chart-container">
+                    <canvas id="overdueChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="glass-card">
+            <h2 class="card-title">Delinquency Deep Dive (Statement Level)</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Account No</th>
+                            <th>Cycle Day</th>
+                            <th>Billing Date</th>
+                            <th>Due Date</th>
+                            <th>Min Due</th>
+                            <th>Total Paid</th>
+                            <th>Overdue Cycles</th>
+                            <th>Arrears (Days)</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chart defaults
+        Chart.defaults.color = '#94a3b8';
+        Chart.defaults.font.family = "'Inter', sans-serif";
+        
+        let cycleChart, overdueChart;
+        let biData = null;
+
+        function initCharts() {
+            // 1. Cycle Chart (Mixed Bar & Line)
+            const ctxCycle = document.getElementById('cycleChart').getContext('2d');
+            cycleChart = new Chart(ctxCycle, {
+                type: 'bar',
+                data: {
+                    labels: [],
+                    datasets: [
+                        {
+                            label: 'Bad Rate (%)',
+                            data: [],
+                            type: 'line',
+                            borderColor: '#ef4444',
+                            backgroundColor: '#ef4444',
+                            borderWidth: 3,
+                            pointBackgroundColor: '#ef4444',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: '#ef4444',
+                            pointRadius: 5,
+                            pointHoverRadius: 7,
+                            tension: 0.4,
+                            yAxisID: 'y1',
+                        },
+                        {
+                            label: 'Active Statements',
+                            data: [],
+                            backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                            borderColor: 'rgba(59, 130, 246, 1)',
+                            borderWidth: 1,
+                            borderRadius: 6,
+                            yAxisID: 'y',
+                        },
+                        {
+                            label: 'Bad Statements',
+                            data: [],
+                            backgroundColor: 'rgba(239, 68, 68, 0.7)',
+                            borderColor: 'rgba(239, 68, 68, 1)',
+                            borderWidth: 1,
+                            borderRadius: 6,
+                            yAxisID: 'y',
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: { position: 'top', labels: { usePointStyle: true, boxWidth: 8 } },
+                        tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                            titleColor: '#fff',
+                            bodyColor: '#cbd5e1',
+                            borderColor: 'rgba(255,255,255,0.1)',
+                            borderWidth: 1,
+                            padding: 12,
+                            boxPadding: 6
+                        }
+                    },
+                    scales: {
+                        x: { grid: { color: 'rgba(255,255,255,0.05)' } },
+                        y: { 
+                            type: 'linear', display: true, position: 'left',
+                            title: { display: true, text: 'Statements Count' },
+                            grid: { color: 'rgba(255,255,255,0.05)' },
+                            beginAtZero: true
+                        },
+                        y1: {
+                            type: 'linear', display: true, position: 'right',
+                            title: { display: true, text: 'Bad Rate %' },
+                            grid: { drawOnChartArea: false },
+                            min: 0, max: 100
+                        }
+                    }
+                }
+            });
+
+            // 2. Overdue Chart (Doughnut)
+            const ctxOverdue = document.getElementById('overdueChart').getContext('2d');
+            overdueChart = new Chart(ctxOverdue, {
+                type: 'doughnut',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        data: [],
+                        backgroundColor: [
+                            'rgba(16, 185, 129, 0.8)', // 0 cycles
+                            'rgba(245, 158, 11, 0.8)', // 1 cycle
+                            'rgba(239, 68, 68, 0.8)',  // 2 cycles
+                            'rgba(185, 28, 28, 0.8)'   // 3+ cycles
+                        ],
+                        borderColor: 'rgba(15, 23, 42, 1)',
+                        borderWidth: 2,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: {
+                        legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 8, padding: 20 } },
+                    }
+                }
+            });
+        }
+
+        const formatCurrency = (val) => '$' + parseFloat(val).toFixed(2);
+        
+        function renderTable(data) {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            data.forEach(row => {
+                const tr = document.createElement('tr');
+                const isBad = row.is_bad === 1;
+                tr.innerHTML = `
+                    <td style="font-weight: 500; color: #f8fafc;">${row.customer_account_no}</td>
+                    <td>${row.billing_cycle_day}</td>
+                    <td>${new Date(row.last_billing_date).toISOString().split('T')[0]}</td>
+                    <td>${new Date(row.min_amt_due_date).toISOString().split('T')[0]}</td>
+                    <td>${formatCurrency(row.minimum_amount)}</td>
+                    <td>${formatCurrency(row.total_paid)}</td>
+                    <td>${row.current_overdue_cycles}</td>
+                    <td>${row.number_of_days_in_arreas}</td>
+                    <td><span class="badge ${isBad ? 'bad' : 'good'}">${isBad ? 'BAD' : 'GOOD'}</span></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function updateDashboard(cycleFilter) {
+            let data = biData.tableData;
+            
+            // Apply Filter
+            if (cycleFilter !== 'all') {
+                data = data.filter(r => r.billing_cycle_day.toString() === cycleFilter);
+            }
+            
+            // 1. Calculate and Update KPIs
+            const totalActive = data.length;
+            const totalBad = data.filter(r => r.is_bad === 1).length;
+            const badRate = totalActive > 0 ? ((totalBad / totalActive) * 100).toFixed(2) : 0;
+            const sumArrears = data.reduce((acc, r) => acc + r.number_of_days_in_arreas, 0);
+            const avgArrears = totalActive > 0 ? (sumArrears / totalActive).toFixed(2) : 0;
+            
+            document.getElementById('kpiTotalActive').textContent = totalActive;
+            document.getElementById('kpiTotalBad').textContent = totalBad;
+            document.getElementById('kpiBadRate').textContent = badRate + '%';
+            document.getElementById('kpiAvgArrears').textContent = avgArrears;
+
+            // 2. Update Cycle Chart
+            const cycleGroups = {};
+            data.forEach(r => {
+                const c = r.billing_cycle_day;
+                if (!cycleGroups[c]) cycleGroups[c] = { active: 0, bad: 0 };
+                cycleGroups[c].active++;
+                if (r.is_bad) cycleGroups[c].bad++;
+            });
+            
+            const cycleLabels = Object.keys(cycleGroups).sort((a,b)=>a-b);
+            const cycleActiveData = cycleLabels.map(c => cycleGroups[c].active);
+            const cycleBadData = cycleLabels.map(c => cycleGroups[c].bad);
+            const cycleBadRateData = cycleLabels.map(c => ((cycleGroups[c].bad / cycleGroups[c].active) * 100).toFixed(2));
+            
+            cycleChart.data.labels = cycleLabels.map(l => l + 'th Cycle');
+            cycleChart.data.datasets[0].data = cycleBadRateData; // Bad Rate
+            cycleChart.data.datasets[1].data = cycleActiveData; // Active
+            cycleChart.data.datasets[2].data = cycleBadData; // Bad Count
+            cycleChart.update();
+
+            // 3. Update Overdue Chart
+            const overdueGroups = {};
+            data.forEach(r => {
+                const o = r.current_overdue_cycles;
+                const key = o >= 3 ? '3+' : o;
+                if (!overdueGroups[key]) overdueGroups[key] = 0;
+                overdueGroups[key]++;
+            });
+            
+            const overdueLabels = Object.keys(overdueGroups).sort((a,b) => {
+                if (a === '3+') return 1;
+                if (b === '3+') return -1;
+                return a - b;
+            });
+            const overdueDataPoints = overdueLabels.map(o => overdueGroups[o]);
+            
+            overdueChart.data.labels = overdueLabels.map(l => l + ' Cycles Overdue');
+            overdueChart.data.datasets[0].data = overdueDataPoints;
+            overdueChart.update();
+
+            // 4. Render Table
+            renderTable(data);
+        }
+
+        // Initialize dashboard
+        async function loadDataAndInit() {
+            try {
+                const response = await fetch('bi_data.json?' + new Date().getTime());
+                if (!response.ok) throw new Error('Data file not found');
+                biData = await response.json();
+                
+                if (!cycleChart) {
+                    initCharts();
+                }
+                updateDashboard(document.getElementById('cycleFilter').value || 'all');
+            } catch (e) {
+                console.error("Failed to load data:", e);
+            }
+        }
+
+        // Run ETL Button Handler
+        document.getElementById('runEtlBtn').addEventListener('click', async () => {
+            const btn = document.getElementById('runEtlBtn');
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<span class="spin-icon">↻</span> Running ETL...';
+            btn.disabled = true;
+
+            try {
+                const res = await fetch('/run-etl', { method: 'POST' });
+                if (res.ok) {
+                    btn.innerHTML = '✓ Success!';
+                    btn.style.backgroundColor = 'var(--accent-green)';
+                    await loadDataAndInit();
+                } else {
+                    alert('Error running ETL pipeline on the server.');
+                    btn.innerHTML = '⚠ Failed';
+                    btn.style.backgroundColor = 'var(--accent-red)';
+                }
+            } catch (e) {
+                alert('Error connecting to server. Make sure you are running via server.py!');
+                btn.innerHTML = '⚠ Failed';
+                btn.style.backgroundColor = 'var(--accent-red)';
+            } finally {
+                setTimeout(() => {
+                    btn.innerHTML = originalContent;
+                    btn.disabled = false;
+                    btn.style.backgroundColor = '';
+                }, 3000);
+            }
+        });
+
+        // Initial Load
+        loadDataAndInit();
+
+        // Listen for filter changes
+        document.getElementById('cycleFilter').addEventListener('change', (e) => {
+            updateDashboard(e.target.value);
+        });
+    </script>
+</body>
+</html>
